@@ -99,23 +99,25 @@ var PageTransitions = (function () {
                         delay: (el, i) => 1000 * i
                     });
                 break;
-            case 2:
-                outClass = 'halaman-rotateFoldTop';
-                inClass = 'halaman-moveFromBottomFade';
-                var textWrapper = document.querySelector('.ml16');
-                textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-                anime.timeline({
-                        loop: false
-                    })
-                    .add({
-                        targets: '.ml16 .letter',
-                        translateY: [-100, 0],
-                        easing: "easeOutExpo",
-                        duration: 1500,
-                        delay: (el, i) => 70 * i
+                case 2:
+                    outClass = 'halaman-rotateFoldTop';
+                    inClass = 'halaman-moveFromBottomFade';
+                
+                    document.querySelectorAll('.ml16').forEach(textWrapper => {
+                        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+                
+                        anime.timeline({
+                                loop: false
+                            })
+                            .add({
+                                targets: textWrapper.querySelectorAll('.letter'),
+                                translateY: [-100, 0],
+                                easing: "easeOutExpo",
+                                duration: 1500,
+                                delay: (el, i) => 70 * i
+                            });
                     });
-                break;
+                    break;                
             case 3:
                 outClass = 'halaman-rotateFoldLeft';
                 inClass = 'halaman-moveFromRightFade';
