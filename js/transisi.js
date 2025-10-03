@@ -29,11 +29,11 @@ var PageTransitions = (function () {
 
         $pages.eq(saatini).addClass('halaman-saatini');
 
-        var sound = document.getElementById("sound");
+        var audio = document.getElementById("audio");
 
         $iterate.on('click', function () {
             $('#tombolMulaiSekarang').hide();
-            sound.play();
+            audio.play();
 
             setInterval(function () {
                 $("#tombolMulaiSekarang").click();
